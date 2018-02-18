@@ -1,0 +1,2 @@
+DBNAME=stinger_test
+VULN_DATA_DBNAME=vuln_data_stinger_test

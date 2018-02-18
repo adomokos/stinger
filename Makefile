@@ -27,6 +27,10 @@ rebuild-vuln-db: ## Drop and rebuild sharded vuln test database
 console: ## Jump into the console and interact wih the services
 	APP_ENV=$(APP_ENV) bundle exec ruby tasks/console.rb
 
+dump-table: ## Dumps tables specified in this target
+	mysqldump --defaults-file=./config/.stinger.my.cnf $(DBNAME) \
+		cves > resources/seed_data/cves.sql
+
 dbconnect: ## Connect to the DB with mysql console
 	mysql --defaults-file=./config/.stinger.my.cnf $(DBNAME)
 

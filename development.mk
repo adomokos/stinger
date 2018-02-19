@@ -8,3 +8,6 @@ seed-db: rebuild-db ## Seed the stinger DB
 	@mysql --defaults-file=./config/.stinger.my.cnf $(DBNAME) < resources/seed_data/vulnerabilities.sql
 	@mysql --defaults-file=./config/.stinger.my.cnf $(DBNAME) < resources/seed_data/cves.sql
 
+extract-seed-data: ## Extracts the seed data zip file
+	cd resources
+	unzip -p ENCRYPTION_KEY seed_data.zip

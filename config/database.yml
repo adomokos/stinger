@@ -1,0 +1,14 @@
+development: &common
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: stinger_development
+  host: localhost
+  username: stinger
+  password: quahgoh3veed4dieGhaewohXiachooxi
+  pool: 5
+  socket: /tmp/mysql.sock
+
+test:
+  <<: *common
+  database: stinger_test

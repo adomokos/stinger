@@ -1,0 +1,40 @@
+# This is the configuration used to check the rubocop source code.
+
+AllCops:
+  TargetRubyVersion: 2.4
+  TargetRailsVersion: 5.1
+
+  Exclude:
+    - 'shared/**/*'
+    - 'vendor/bundle/**/*'
+    - 'bin/*'
+    - 'Gemfile'
+
+Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Max: 35
+  Exclude:
+    - 'spec/**/*.rb'
+
+Style/Encoding:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Layout/MultilineMethodCallBraceLayout:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedStyle: hash_rockets
+
+Style/DoubleNegation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 15

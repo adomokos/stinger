@@ -12,3 +12,7 @@ group :test do
   gem 'factory_bot', '~> 4.8'
   gem 'database_cleaner'
 end
+
+group :development, :test do
+  gem 'rubocop', :require => false
+end

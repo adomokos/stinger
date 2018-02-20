@@ -6,7 +6,8 @@ require 'pry'
 require 'factory_bot'
 require 'database_cleaner'
 
-CLIENT_ID = 3
+CLIENT_ID = 2
+SHARDED_CLIENT_ID = 3
 
 # ActiveRecord::Base.logger = Logger.new(STDOUT)
 

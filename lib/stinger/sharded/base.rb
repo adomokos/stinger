@@ -27,6 +27,16 @@ module Stinger
         @used_shard = shard_name.to_sym
         self
       end
+
+      def self.selected_shard
+        return @used_shard if @used_shard
+
+        Stinger::Sharded::Utils.shard_name_for(current_client_id)
+      end
+
+      def self.current_client_id
+        Thread.current[:client_id]
+      end
     end
   end
 end

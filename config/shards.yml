@@ -9,7 +9,7 @@ octopus:
       adapter: mysql2
       database: vuln_data_stinger_3_development
   test:
-    shard_one:
+    client_3:
       host: localhost
       adapter: mysql2
       database: vuln_data_stinger_3_test

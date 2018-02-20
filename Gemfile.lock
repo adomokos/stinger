@@ -67,9 +67,9 @@ DEPENDENCIES
   activerecord (~> 5.1.5)
   database_cleaner
   factory_bot (~> 4.8)
-  mysql2
+  mysql2 (~> 0.4.10)
   pry
-  require_all
+  require_all (~> 1.5.0)
   rspec (~> 3.7.0)
   rubocop
 

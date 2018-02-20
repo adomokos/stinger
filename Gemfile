@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 
 gem 'activerecord', '~> 5.1.5'
 gem 'pry'
-gem 'require_all'
-gem 'mysql2'
+gem 'require_all', '~> 1.5.0'
+gem 'mysql2', '~> 0.4.10'
 
 group :test do
   gem 'rspec', '~> 3.7.0'

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Client do
+RSpec.describe Stinger::Client do
   subject(:client) do
     FactoryBot.create(:client)
   end

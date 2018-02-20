@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :cve do
+  factory :cve, :class => Stinger::Cve do
     trait :apple do
       identifier 'CVE-2014-0064'
       summary 'Multiple integer overflows in the path_in'

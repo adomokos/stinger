@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Asset do
+RSpec.describe Stinger::Asset do
   subject(:asset) do
     FactoryBot.create(:asset, :ip_address_locator)
   end

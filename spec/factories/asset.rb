@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :asset do
+  factory :asset, :class => Stinger::Asset do
     client_id CLIENT_ID
 
     trait :ip_address_locator do

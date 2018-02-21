@@ -49,11 +49,16 @@ run-etl: require-client-id ## Run the ETL to pump the data from master -> shard
 	@rm -f scripts/etl.sh.bak
 	@sh scripts/etl.sh run_etl
 
-sanity_check: ## Compares record counts after ETL
+sanity-check: ## Compares record counts after ETL
 	@echo "Record counts for $(DBNAME)"
 	@mysql --defaults-file=./config/.stinger.my.cnf $(DBNAME) -e "SELECT * FROM record_counts";
 	@echo "Record counts for $(VULN_DATA_DBNAME)"
 	@mysql --defaults-file=./config/.stinger.my.cnf $(VULN_DATA_DBNAME) -e "SELECT * FROM record_counts";
+
+etl-for-client-2: ## To transfer and check CLIENT_ID 2 data
+	APP_ENV=development CLIENT_ID=2 make rebuild-vuln-db
+	APP_ENV=development CLIENT_ID=2 make run-etl
+	APP_ENV=development CLIENT_ID=2 make sanity-check
 
 
 .PHONY: help

@@ -24,6 +24,19 @@ module Stinger
       def calculate_shard_id_from(client_id, entity_id)
         (client_id << RESERVED_BITS_FOR_ENTITY_ID) | (entity_id << 0)
       end
+
+      # Returns a connection to the specified shard
+      def connection_for(shard_name: nil, client_id: nil)
+        used_shard = if client_id
+                       shard_name_for(client_id)
+                     else
+                       shard_name
+                     end
+
+        Octopus.using(used_shard) do
+          ActiveRecord::Base.connection.select_connection
+        end
+      end
     end
   end
 end

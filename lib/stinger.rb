@@ -13,6 +13,7 @@ end
 require 'active_record'
 require 'octopus'
 require 'require_all'
+require 'light-service'
 require 'pry'
 
 require_all 'lib'

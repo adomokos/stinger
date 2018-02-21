@@ -60,6 +60,9 @@ etl-for-client-2: ## To transfer and check CLIENT_ID 2 data
 	APP_ENV=development CLIENT_ID=2 make run-etl
 	APP_ENV=development CLIENT_ID=2 make sanity-check
 
+schema-compare: ## Compares sharded schemas
+	APP_ENV=test bundle exec ruby tasks/schema_compare.rb
+
 
 .PHONY: help
 

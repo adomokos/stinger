@@ -2,18 +2,24 @@ require 'spec_helper'
 
 RSpec.describe Stinger::Sharded::Asset do
   before do
-    ActiveRecord::Base.logger = Logger.new(STDOUT)
-
-    cve = FactoryBot.create(:cve, :apple)
+    apple_cve = FactoryBot.create(:cve, :apple)
+    oracle_cve = FactoryBot.create(:cve, :oracle)
     FactoryBot.create(:client, :sharded)
+
     Octopus.using(:client_3) do
       asset = FactoryBot.create(:asset,
                                 :ip_address_locator,
                                 :client_id => SHARDED_CLIENT_ID)
+
       FactoryBot.create(:vulnerability,
                         :client_id => SHARDED_CLIENT_ID,
                         :asset => asset,
-                        :cve_id => cve.id)
+                        :cve_id => apple_cve.id)
+
+      FactoryBot.create(:vulnerability,
+                        :client_id => SHARDED_CLIENT_ID,
+                        :asset => asset,
+                        :cve_id => oracle_cve.id)
     end
   end
 
@@ -21,13 +27,17 @@ RSpec.describe Stinger::Sharded::Asset do
     Stinger::Sharded::Asset.using(:client_3).first
   end
 
-  it 'has many vulnerabilities' do
+  it 'has 1 asset in the DB' do
     asset_count =
       Stinger::Sharded::Asset
       .using(:client_3)
       .count
 
     expect(asset_count).to eq(1)
+  end
+
+  it 'has two vulnerabilities' do
+    expect(asset.vulnerabilities.count).to eq(2)
   end
 
   it "can find it's client" do

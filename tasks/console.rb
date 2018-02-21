@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 puts "Console is starting up in the ::#{ENV['APP_ENV']}:: environment"
 require 'pry'
 require_relative '../lib/stinger'

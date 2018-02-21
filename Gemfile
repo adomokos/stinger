@@ -7,6 +7,7 @@ gem 'pry'
 gem 'require_all', '~> 1.5.0'
 gem 'mysql2', '~> 0.4.10'
 gem 'ar-octopus', '~> 0.9.2'
+gem 'rake', '~> 12.3.0'
 
 group :test do
   gem 'rspec', '~> 3.7.0'

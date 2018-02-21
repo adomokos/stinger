@@ -2,3 +2,5 @@
 bin/
 vendor/
 resources/seed_data/*.sql
+resources/extracts/
+logs/

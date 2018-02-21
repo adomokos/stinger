@@ -37,6 +37,13 @@ module Stinger
       def self.current_client_id
         Thread.current[:client_id]
       end
+
+      # Original ideas are from the Pinterest sharding blog post: https://goo.gl/7HwBXQ
+      def shard_id
+        return nil unless persisted?
+
+        Stinger::Sharded::Utils.calculate_shard_id_from(client_id, id)
+      end
     end
   end
 end

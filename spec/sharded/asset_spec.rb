@@ -1,27 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Stinger::Sharded::Asset do
-  before do
-    apple_cve = FactoryBot.create(:cve, :apple)
-    oracle_cve = FactoryBot.create(:cve, :oracle)
-    FactoryBot.create(:client, :sharded)
-
-    Octopus.using(:client_3) do
-      asset = FactoryBot.create(:asset,
-                                :ip_address_locator,
-                                :client_id => SHARDED_CLIENT_ID)
-
-      FactoryBot.create(:vulnerability,
-                        :client_id => SHARDED_CLIENT_ID,
-                        :asset => asset,
-                        :cve_id => apple_cve.id)
-
-      FactoryBot.create(:vulnerability,
-                        :client_id => SHARDED_CLIENT_ID,
-                        :asset => asset,
-                        :cve_id => oracle_cve.id)
-    end
-  end
+  include_context 'set up sharded data'
 
   subject(:asset) do
     Stinger::Sharded::Asset.using(:client_3).first

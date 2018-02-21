@@ -7,6 +7,7 @@ require 'factory_bot'
 require 'database_cleaner'
 
 Dir[File.dirname(__FILE__) + '/support/**/*.rb'].each { |f| require f }
+Dir[File.dirname(__FILE__) + '/shared_examples/*.rb'].each { |f| require f }
 
 CLIENT_ID = 2
 SHARDED_CLIENT_ID = 3

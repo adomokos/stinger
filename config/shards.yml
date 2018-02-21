@@ -4,11 +4,11 @@ octopus:
     - test
     # - production
   development:
-    client_3:
+    client_2:
       adapter: mysql2
       encoding: utf8
       reconnect: false
-      database: vuln_data_stinger_3_development
+      database: vuln_data_stinger_2_development
       host: localhost
       username: stinger
       password: quahgoh3veed4dieGhaewohXiachooxi

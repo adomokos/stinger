@@ -63,6 +63,9 @@ etl-for-client-2: ## To transfer and check CLIENT_ID 2 data
 schema-compare: ## Compares sharded schemas
 	APP_ENV=test bundle exec ruby tasks/schema_compare.rb
 
+asset-count: ## Asset count accross shards
+	APP_ENV=development bundle exec ruby tasks/asset_count.rb
+
 
 .PHONY: help
 

@@ -34,6 +34,20 @@ dump-table: ## Dumps tables specified in this target
 dbconnect: ## Connect to the DB with mysql console
 	mysql --defaults-file=./config/.stinger.my.cnf $(DBNAME)
 
+require-client-id:
+ifndef CLIENT_ID
+	$(error CLIENT_ID is not set)
+endif
+
+run-etl: require-client-id ## Run the ETL to pump the data from master -> shard
+	@echo "Set up the shell script with global variables"
+	@sed -i.bak "s/^CLIENT_ID=.*/CLIENT_ID=$(CLIENT_ID)/" scripts/etl.sh
+	@sed -i.bak "s/^VULN_DATA_DBNAME=.*/VULN_DATA_DBNAME=$(VULN_DATA_DBNAME)/" scripts/etl.sh
+	@sed -i.bak "s/^DBNAME=.*/DBNAME=$(DBNAME)/" scripts/etl.sh
+	@rm -f scripts/etl.sh.bak
+	@sh scripts/etl.sh run_etl
+
+
 .PHONY: help
 
 help:

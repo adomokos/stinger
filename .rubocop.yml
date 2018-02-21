@@ -38,3 +38,6 @@ Style/DoubleNegation:
 
 Metrics/MethodLength:
   Max: 15
+
+Metrics/LineLength:
+  Max: 100

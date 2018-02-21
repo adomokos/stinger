@@ -5,7 +5,7 @@ RSpec.describe Stinger::Client do
     FactoryBot.create(:client)
   end
 
-  it 'has a hard-coded id - 3' do
+  it 'has a hard-coded id - 2' do
     expect(client.id).to eq(CLIENT_ID)
   end
 

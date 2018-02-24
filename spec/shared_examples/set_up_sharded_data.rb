@@ -1,12 +1,12 @@
 RSpec.shared_context 'set up sharded data' do
-  let(:sharded_asset) do
-    FactoryBot.create(:asset,
-                      :ip_address_locator,
-                      :client_id => SHARDED_CLIENT_ID)
-  end
   let!(:sharded_client) { FactoryBot.create(:client, :sharded) }
   let!(:apple_cve) { FactoryBot.create(:cve, :apple) }
   let!(:oracle_cve) { FactoryBot.create(:cve, :oracle) }
+  let(:sharded_asset) do
+    FactoryBot.create(:asset,
+                      :ip_address_locator,
+                      :client_id => sharded_client.id)
+  end
 
   before do
     # ActiveRecord::Base.logger = Logger.new(STDOUT)

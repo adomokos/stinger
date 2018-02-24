@@ -10,7 +10,7 @@ RSpec.describe Stinger::Endpoints::Asset do
   it 'can find an asset with shard_id' do
     asset_shard_id = asset.shard_id
 
-    located_asset_info = described_class.find(asset_shard_id)
+    located_asset_info = described_class.show(asset_shard_id)
 
     expect(located_asset_info.fetch(:id)).to eq(asset.id)
   end
@@ -20,7 +20,7 @@ RSpec.describe Stinger::Endpoints::Asset do
       Stinger::Sharded::Utils
       .calculate_shard_id_from(100, asset.id) # Incorrect client id
 
-    located_asset_info = described_class.find(incorrect_shard_id)
+    located_asset_info = described_class.show(incorrect_shard_id)
 
     expect(located_asset_info).to be_empty
   end

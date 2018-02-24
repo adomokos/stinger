@@ -1,7 +1,7 @@
 module Stinger
   module Endpoints
     class Asset
-      def self.find(shard_id)
+      def self.show(shard_id)
         client_id, asset_id =
           Stinger::Sharded::Utils.ids_from_shard_id(shard_id)
 

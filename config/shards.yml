@@ -1,3 +1,11 @@
+base-connection: &con
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  host: localhost
+  pool: 5
+  socket: /tmp/mysql.sock
+
 octopus:
   environments:
     - development
@@ -5,23 +13,13 @@ octopus:
     # - production
   development:
     client_2:
-      adapter: mysql2
-      encoding: utf8
-      reconnect: false
+      <<: *con
       database: vuln_data_stinger_2_development
-      host: localhost
       username: stinger
       password: quahgoh3veed4dieGhaewohXiachooxi
-      pool: 5
-      socket: /tmp/mysql.sock
   test:
     client_3:
-      adapter: mysql2
-      encoding: utf8
-      reconnect: false
+      <<: *con
       database: vuln_data_stinger_3_test
-      host: localhost
       username: stinger
       password: quahgoh3veed4dieGhaewohXiachooxi
-      pool: 5
-      socket: /tmp/mysql.sock

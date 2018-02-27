@@ -7,6 +7,8 @@ CREATE TABLE `assets` (
   `ip_address_locator` varchar(255) DEFAULT NULL,
   `hostname_locator` varchar(255) DEFAULT NULL,
   `url_locator` varchar(255) DEFAULT NULL,
+  `file_locator` varchar(255) DEFAULT NULL,
+  `external_id_locator` varchar(255) DEFAULT NULL,
   `notes` mediumtext,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,

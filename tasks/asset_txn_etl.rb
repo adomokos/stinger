@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-puts "Asset count is starting up in the ::#{ENV['APP_ENV']}:: environment"
+puts "Asset Transactional ETL is starting up in the ::#{ENV['APP_ENV']}:: environment"
 
 require_relative '../lib/stinger'
 

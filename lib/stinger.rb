@@ -14,6 +14,7 @@ require 'active_record'
 require 'octopus'
 require 'require_all'
 require 'light-service'
+require 'bulk_insert'
 require 'pry'
 
 require_all 'lib'

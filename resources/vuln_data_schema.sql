@@ -16,7 +16,9 @@ CREATE TABLE `assets` (
   KEY `index_assets_on_client_id` (`client_id`),
   KEY `client_id_ip_address_locator` (`client_id`,`ip_address_locator`),
   KEY `client_id_hostname_locator` (`client_id`,`hostname_locator`),
-  KEY `client_id_url_locator` (`client_id`,`url_locator`)
+  KEY `client_id_url_locator` (`client_id`,`url_locator`),
+  KEY `client_id_file_locator` (`client_id`,`file_locator`),
+  KEY `client_id_external_id_locator` (`client_id`,`external_id_locator`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `vulnerabilities`;

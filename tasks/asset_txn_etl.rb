@@ -5,7 +5,7 @@ puts "Asset count is starting up in the ::#{ENV['APP_ENV']}:: environment"
 require_relative '../lib/stinger'
 
 counter = 1
-Stinger::Asset.where(:client_id => 2).each do |a|
+Stinger::Asset.where(:client_id => 2).take(20).each do |a|
   puts counter
   sa = Stinger::Sharded::Asset.using(:client_2).new(a.attributes)
   sa.save!

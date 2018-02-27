@@ -6,7 +6,7 @@ require_relative '../lib/stinger'
 
 counter = 1
 Thread.current[:client_id] = 2
-Stinger::Asset.where(:client_id => 2).take(10).each do |a|
+Stinger::Asset.where(:client_id => 2).take(20).each do |a|
   puts counter
   sa = Stinger::Sharded::Asset.new(a.attributes)
   sa.save!

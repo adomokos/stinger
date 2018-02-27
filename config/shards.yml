@@ -5,6 +5,8 @@ base-connection: &con
   host: localhost
   pool: 5
   socket: /tmp/mysql.sock
+  username: stinger
+  password: quahgoh3veed4dieGhaewohXiachooxi
 
 octopus:
   environments:
@@ -15,11 +17,7 @@ octopus:
     client_2:
       <<: *con
       database: vuln_data_stinger_2_development
-      username: stinger
-      password: quahgoh3veed4dieGhaewohXiachooxi
   test:
     client_3:
       <<: *con
       database: vuln_data_stinger_3_test
-      username: stinger
-      password: quahgoh3veed4dieGhaewohXiachooxi

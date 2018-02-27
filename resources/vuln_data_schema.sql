@@ -13,7 +13,6 @@ CREATE TABLE `assets` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `index_assets_on_client_id` (`client_id`),
   KEY `client_id_ip_address_locator` (`client_id`,`ip_address_locator`),
   KEY `client_id_hostname_locator` (`client_id`,`hostname_locator`),
   KEY `client_id_url_locator` (`client_id`,`url_locator`),

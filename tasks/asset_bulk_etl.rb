@@ -14,15 +14,7 @@ Stinger::Asset.where(:client_id => 2).take(20).each do |a|
   sa.save!
   Stinger::Sharded::Vulnerability.bulk_insert do |worker|
     a.vulnerabilities.each do |v|
-      worker.add(
-        :id => v.id,
-        :client_id => v.client_id,
-        :asset_id => v.asset_id,
-        :cve_id => v.cve_id,
-        :notes => v.notes,
-        :created_at => v.created_at,
-        :updated_at => v.updated_at
-      )
+      worker.add(v.attributes)
     end
   end
   counter += 1

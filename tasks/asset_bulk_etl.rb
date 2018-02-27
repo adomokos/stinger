@@ -5,11 +5,12 @@ puts "Asset count is starting up in the ::#{ENV['APP_ENV']}:: environment"
 require_relative '../lib/stinger'
 
 counter = 1
+Thread.current[:client_id] = 2
 Stinger::Asset.where(:client_id => 2).take(10).each do |a|
   puts counter
-  sa = Stinger::Sharded::Asset.using(:client_2).new(a.attributes)
+  sa = Stinger::Sharded::Asset.new(a.attributes)
   sa.save!
-  Stinger::Sharded::Vulnerability.using(:client_3).bulk_insert do |worker|
+  Stinger::Sharded::Vulnerability.bulk_insert do |worker|
     a.vulnerabilities.each do |v|
       worker.add(
         :id => v.id,
@@ -26,4 +27,4 @@ Stinger::Asset.where(:client_id => 2).take(10).each do |a|
 end
 
 puts Stinger::Asset.count
-puts Stinger::Sharded::Asset.using(:client_2).count
+puts Stinger::Sharded::Asset.count

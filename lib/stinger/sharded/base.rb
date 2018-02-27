@@ -4,7 +4,7 @@ module Stinger
       self.abstract_class = true
 
       SHARDED_METHODS = %i[all count find find_by find_or_initialize_by
-                           first last new second update where].freeze
+                           first last new second update where bulk_insert].freeze
 
       SHARDED_METHODS.each do |m|
         singleton_class.send(:alias_method, "#{m}_old", m)
